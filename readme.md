@@ -3,4 +3,6 @@
   * Installing node modules
   * Adding gulpfile.js
 * Building Components
-  * Adding routes 
+  * Adding routes
+  * Mocking API calls
+  * React Lifecycle
