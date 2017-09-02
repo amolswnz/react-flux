@@ -23,6 +23,7 @@
         'node_modules/bootstrap/dist/css/bootstrap.min.css',
         'node_modules/bootstrap/dist/css/bootstrap-theme.min.css'
       ],
+      img: './src/img/*',
       dist: './dist',
       mainJs: './src/main.js'
     }
@@ -67,6 +68,12 @@
       .pipe(gulp.dest(config.paths.dist + '/css'));
   });
 
+  gulp.task('img', function() {
+    gulp.src(config.paths.img)
+      .pipe(gulp.dest(config.paths.dist + '/img'))
+      .pipe(connect.reload());
+  });
+
   gulp.task('lint', function() {
     return gulp.src(config.paths.js)
       .pipe(eslint({
@@ -80,6 +87,6 @@
     gulp.watch(config.paths.js, ['js', 'lint']);
   });
 
-  gulp.task('default', ['html', 'js', 'css', 'lint', 'open', 'watch']);
+  gulp.task('default', ['html', 'js', 'css', 'img', 'lint', 'open', 'watch']);
 
 }());
