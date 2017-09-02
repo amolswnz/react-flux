@@ -49287,13 +49287,10 @@ module.exports = {
   var React = require('react');
   var AuthorApi = require('../../api/authorApi');
 
-  var Authors = React.createClass({displayName: "Authors",
-    getInitialState: function() {
-      return {authors: []};
-    },
+  var AuthorList = React.createClass({displayName: "AuthorList",
+    propTypes: {
+        authors: React.PropTypes.array.isRequired,
 
-    componentWillMount: function() {
-      this.setState({authors: AuthorApi.getAllAuthors()});
     },
 
     render: function() {
@@ -49310,14 +49307,13 @@ module.exports = {
 
       return (
         React.createElement("div", null, 
-          React.createElement("h1", null, "Authors"), 
           React.createElement("table", {className: "table"}, 
             React.createElement("thead", null, 
               React.createElement("th", null, "ID"), 
               React.createElement("th", null, "Name")
             ), 
             React.createElement("tbody", null, 
-              this.state.authors.map(showAuthor, this)
+              this.props.authors.map(showAuthor, this)
             )
           )
         )
@@ -49325,10 +49321,43 @@ module.exports = {
     }
   });
 
-  module.exports = Authors;
+  module.exports = AuthorList;
 }());
 
 },{"../../api/authorApi":198,"react":197}],202:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  var React = require('react');
+  var AuthorApi = require('../../api/authorApi');
+  var AuthorList = require('./authorList');
+
+  var AuthorPage = React.createClass({displayName: "AuthorPage",
+    getInitialState: function() {
+      return {authors: []};
+    },
+
+    componentDidMount: function() {
+      if(this.isMounted()) {
+        this.setState({authors: AuthorApi.getAllAuthors()});
+      }
+    },
+
+    render: function() {
+
+      return (
+        React.createElement("div", null, 
+          React.createElement("h1", null, "Authors List"), 
+          React.createElement(AuthorList, {authors: this.state.authors})
+        )
+      );
+    }
+  });
+
+  module.exports = AuthorPage;
+}());
+
+},{"../../api/authorApi":198,"./authorList":201,"react":197}],203:[function(require,module,exports){
 (function() {
   "use strict";
 
@@ -49364,7 +49393,7 @@ module.exports = {
   module.exports = Header;
 }());
 
-},{"react":197,"react-router":28}],203:[function(require,module,exports){
+},{"react":197,"react-router":28}],204:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -49384,7 +49413,7 @@ module.exports = {
   module.exports = Home;
 }());
 
-},{"react":197}],204:[function(require,module,exports){
+},{"react":197}],205:[function(require,module,exports){
 $ = jQuery = require('jquery');
 var React = require('react');
 var Home = require('./components/homePage');
@@ -49429,4 +49458,4 @@ var Authors = require('./components/authors/authorPage.js');
   render();
 }());
 
-},{"./components/about/aboutPage":200,"./components/authors/authorPage.js":201,"./components/common/header":202,"./components/homePage":203,"jquery":1,"react":197}]},{},[204]);
+},{"./components/about/aboutPage":200,"./components/authors/authorPage.js":202,"./components/common/header":203,"./components/homePage":204,"jquery":1,"react":197}]},{},[205]);

@@ -6,3 +6,5 @@
   * Adding routes
   * Mocking API calls
   * React Lifecycle
+  * React Composition
+  * Prop Validation
