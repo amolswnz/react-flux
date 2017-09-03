@@ -10,18 +10,18 @@
       return (
         <nav className="navbar navbar-default">
           <div className="container-fluid">
-            <a href='/' className="navbar-brand">
+            <Link to='app' className="navbar-brand">
               <img src="img/logo.png" width='52'/>
-            </a>
+            </Link>
             <ul className="nav navbar-nav">
               <li>
-                <a href='/'>Home</a>
+                <Link to='app'>Home</Link>
               </li>
               <li>
-                <a href='/#authors'>Authors</a>
+                <Link to='authors'>Authors</Link>
               </li>
               <li>
-                <a href="/#about">About</a>
+                <Link to='about'>About</Link>
               </li>
             </ul>
           </div>
