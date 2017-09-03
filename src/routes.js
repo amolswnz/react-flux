@@ -16,11 +16,14 @@
       <Route name="authors" handler={require('./components/authors/authorPage')}/>
       <Route name="about" handler={require('./components/about/aboutPage')}/>
 
+      <Route name='addAuthor' path='author' handler={require('./components/authors/manageAuthorPage.js')}/>
+      <Route name='editAuthor' path='author/:id' handler={require('./components/authors/manageAuthorPage.js')}/>
+
       <NotFoundRoute handler={require('./components/404')}/>
 
-      <Redirect from='about-us' to='about' />
-      <Redirect from='awthurs' to='authors' />
-      <Redirect from='about/*' to='about' />
+      <Redirect from='about-us' to='about'/>
+      <Redirect from='awthurs' to='authors'/>
+      <Redirect from='about/*' to='about'/>
     </Route>
   );
 

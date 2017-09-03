@@ -4,6 +4,9 @@
   var React = require('react');
   var AuthorApi = require('../../api/authorApi');
 
+  var Router = require('react-router');
+  var Link = Router.Link;
+
   var AuthorList = React.createClass({
     propTypes: {
         authors: React.PropTypes.array.isRequired
@@ -15,7 +18,8 @@
         return (
           <tr key={author.id}>
             <td>
-              <a href={'/#authors/' + author.id}> {author.id} </a>
+              {/* <a href={'/#authors/' + author.id}> {author.id} </a> */}
+              <Link to='editAuthor' params={{id: author.id}}>{author.id}</Link>
             </td>
             <td>{author.firstName} {author.lastName}</td>
           </tr>
