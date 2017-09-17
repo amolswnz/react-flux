@@ -19,3 +19,8 @@
     * Saving form
     * Route Transitions
     * Component Mount
+  * Flux
+    * Actions
+    * Dispatcher
+    * Stores
+    * React View 
